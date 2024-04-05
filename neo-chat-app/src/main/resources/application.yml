@@ -1,0 +1,5 @@
+spring:
+  config:
+    name: neo-chat
+  profiles:
+    active: dev
