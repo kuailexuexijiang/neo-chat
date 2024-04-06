@@ -17,5 +17,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.neo</groupId>
+            <artifactId>neo-chat-types</artifactId>
+        </dependency>
     </dependencies>
 </project>

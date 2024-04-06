@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### 忽略push.sh
+neo-chat-app/push.sh

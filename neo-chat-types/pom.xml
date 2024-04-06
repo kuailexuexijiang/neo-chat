@@ -11,4 +11,11 @@
     <packaging>jar</packaging>
 
     <name>neo-chat-types</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 </project>
