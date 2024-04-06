@@ -1,5 +1,5 @@
 CONTAINER_NAME=neo-chat
-IMAGE_NAME=neo.zhang/neo-chat-app
+IMAGE_NAME=nobugboy/neo-chat-app
 PORT=8090
 
 echo "容器部署开始 ${CONTAINER_NAME}"

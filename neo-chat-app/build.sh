@@ -1,1 +1,1 @@
-docker build -f ./Dockerfile -t neo.zhang/neo-chat-app .
+docker build -f ./Dockerfile -t nobugboy/neo-chat .
