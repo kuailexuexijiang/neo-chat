@@ -64,6 +64,11 @@
             <groupId>com.neo</groupId>
             <artifactId>neo-chat-infrastructure</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.neo</groupId>
+            <artifactId>neo-chat-sdk-java</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

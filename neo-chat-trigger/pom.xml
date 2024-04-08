@@ -22,5 +22,10 @@
             <groupId>com.neo</groupId>
             <artifactId>neo-chat-types</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.neo</groupId>
+            <artifactId>neo-chat-domain</artifactId>
+        </dependency>
     </dependencies>
 </project>

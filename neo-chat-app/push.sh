@@ -2,7 +2,7 @@
 
 # Docker Hub 用户名和密码
 DOCKER_USERNAME="nobugboy"
-DOCKER_PASSWORD="********"
+DOCKER_PASSWORD="v_3pJ3SKRf^4.K5"
 
 # 登录 Docker Hub
 echo "Logging in to Docker Hub..."
