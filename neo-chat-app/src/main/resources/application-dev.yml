@@ -6,9 +6,9 @@ chatgpt:
   sdk:
     config:
       # 官网地址 https://api.openai.com/
-      api-host: https://gpt35.allai.works/
+      api-host: http://117.72.44.202:8000/
       # 官网申请 https://platform.openai.com/account/api-keys
-      api-key: sk-usywctCXPkAOxhirR5hXxYmNwjBKrycHiAD5P4Iq80ZpZQB8
+      api-key: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTcyMDMzMjE2MiwiaWF0IjoxNzEyNTU2MTYyLCJqdGkiOiJjbzlvaDBrdWR1NmM1am80bzJvMCIsInR5cCI6InJlZnJlc2giLCJzdWIiOiJjbzlvOWdxbG5sOTBiNzZ0ZnNrZyIsInNwYWNlX2lkIjoiY250dW50cGtxcTRqOWxnZDYwazAiLCJhYnN0cmFjdF91c2VyX2lkIjoiY250dW50cGtxcTRqOWxnZDYwamcifQ._A9y7uEF41jkq2M9sgYFtQe7GeZYwL9MN0UgEYjEkVi1_Md_msrtD7r4HEUWVCgiTcRUH1Bs8WOHKcoYrLh13A
 
 app:
   config:
