@@ -1,4 +1,4 @@
-package com.neo.domain.chatgpt.model.entity;
+package com.neo.domain.aigc.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

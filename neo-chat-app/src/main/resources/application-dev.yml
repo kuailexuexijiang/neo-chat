@@ -27,3 +27,9 @@ thread:
         keep-alive-time: 5000
         block-queue-size: 5000
         policy: CallerRunsPolicy
+
+wx:
+  config:
+    originalid: gh_69ff7daf9c33
+    appid: wxd8c3c4617d93a08f
+    token: q1w2

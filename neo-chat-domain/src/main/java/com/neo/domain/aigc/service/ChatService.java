@@ -1,8 +1,8 @@
-package com.neo.domain.chatgpt.service;
+package com.neo.domain.aigc.service;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.neo.domain.chatgpt.model.aggregates.ChatProcessAggregate;
+import com.neo.domain.aigc.model.aggregates.ChatProcessAggregate;
 import com.neo.sdk.chatgpt.common.Constants;
 import com.neo.sdk.chatgpt.domain.ChatChoice;
 import com.neo.sdk.chatgpt.domain.ChatCompletionRequest;

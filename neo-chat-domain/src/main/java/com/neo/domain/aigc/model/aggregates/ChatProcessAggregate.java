@@ -1,6 +1,6 @@
-package com.neo.domain.chatgpt.model.aggregates;
+package com.neo.domain.aigc.model.aggregates;
 
-import com.neo.domain.chatgpt.model.entity.MessageEntity;
+import com.neo.domain.aigc.model.entity.MessageEntity;
 import com.neo.types.enums.ChatGPTModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-/**
- * @author Fuzhengwei bugstack.cn @小傅哥
- * @description
- * @create 2023-07-22 21:09
- */
 @Data
 @Builder
 @NoArgsConstructor
