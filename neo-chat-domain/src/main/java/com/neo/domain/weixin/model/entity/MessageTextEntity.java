@@ -1,24 +1,38 @@
 package com.neo.domain.weixin.model.entity;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonRootName("xml")
 public class MessageTextEntity {
 
-    @XStreamAlias("MsgId")
+    @JacksonXmlCData
+    @JsonProperty("MsgId")
     private String msgId;
-    @XStreamAlias("ToUserName")
+    @JacksonXmlCData
+    @JsonProperty("ToUserName")
     private String toUserName;
-    @XStreamAlias("FromUserName")
+    @JacksonXmlCData
+    @JsonProperty("FromUserName")
     private String fromUserName;
-    @XStreamAlias("CreateTime")
+    @JacksonXmlCData
+    @JsonProperty("CreateTime")
     private String createTime;
-    @XStreamAlias("MsgType")
+    @JacksonXmlCData
+    @JsonProperty("MsgType")
     private String msgType;
-    @XStreamAlias("Content")
+    @JacksonXmlCData
+    @JsonProperty("Content")
     private String content;
-    @XStreamAlias("Event")
+    @JacksonXmlCData
+    @JsonProperty("Event")
     private String event;
-    @XStreamAlias("EventKey")
+    @JacksonXmlCData
+    @JsonProperty("EventKey")
     private String eventKey;
 
     public MessageTextEntity() {

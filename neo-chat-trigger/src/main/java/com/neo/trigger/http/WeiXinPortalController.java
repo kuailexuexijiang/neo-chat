@@ -1,5 +1,6 @@
 package com.neo.trigger.http;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.neo.domain.weixin.model.entity.MessageTextEntity;
 import com.neo.domain.weixin.model.entity.UserBehaviorMessageEntity;
 import com.neo.domain.weixin.service.IWeiXinBehaviorService;
