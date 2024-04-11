@@ -35,7 +35,7 @@ public abstract class AbstractAuthService implements IAuthService {
                     .build();
         }
 
-// 2. 校验判断，非成功则直接返回
+        // 2. 校验判断，非成功则直接返回
         AuthStateEntity authStateEntity = this.checkCode(code);
         if (!authStateEntity.getCode().equals(AuthTypeVO.A0000.getCode())) {
             return authStateEntity;
@@ -49,6 +49,7 @@ public abstract class AbstractAuthService implements IAuthService {
 
         return authStateEntity;
     }
+
     protected abstract AuthStateEntity checkCode(String code);
 
     /**
