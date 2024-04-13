@@ -16,6 +16,8 @@ app:
     api-version: v1
     # 跨域，开发阶段可以设置为 * 不限制
     cross-origin: '*'
+    limit-count: 10
+    white-list: wxd8c3c4617d93a08f
 
 # 线程池配置
 thread:

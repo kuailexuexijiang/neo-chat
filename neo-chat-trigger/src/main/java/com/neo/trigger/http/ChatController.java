@@ -68,8 +68,12 @@ public class ChatController {
                 return emitter;
             }
 
+            // 3. 获取 OpenID
+            String openid = authService.openid(token);
+            log.info("流式问答请求处理，openid:{} 请求模型:{}", openid, request.getModel());
+
             ChatProcessAggregate chatProcessAggregate = ChatProcessAggregate.builder()
-                    .token(token)
+                    .openid(openid)
                     .model(request.getModel())
                     .messages(request.getMessages().stream()
                             .map(entity -> MessageEntity.builder()
