@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.neo.domain.aigc.model.aggregates.ChatProcessAggregate;
 import com.neo.domain.aigc.model.entity.RuleLogicEntity;
+import com.neo.domain.aigc.model.entity.UserAccountQuotaEntity;
 import com.neo.domain.aigc.model.valobj.LogicCheckTypeVO;
 import com.neo.domain.aigc.service.rule.ILogicFilter;
 import com.neo.domain.aigc.service.rule.factory.DefaultLogicFactory;
@@ -34,11 +35,12 @@ public class ChatService extends AbstractChatService {
     private DefaultLogicFactory logicFactory;
 
     @Override
-    protected RuleLogicEntity<ChatProcessAggregate> doCheckLogic(ChatProcessAggregate chatProcess, String... logics) throws Exception {
+    protected RuleLogicEntity<ChatProcessAggregate> doCheckLogic(ChatProcessAggregate chatProcess, UserAccountQuotaEntity userAccountQuotaEntity, String... logics) throws Exception {
         Map<String, ILogicFilter> logicFilterMap = logicFactory.openLogicFilter();
         RuleLogicEntity<ChatProcessAggregate> entity = null;
         for (String code : logics) {
-            entity = logicFilterMap.get(code).filter(chatProcess);
+            if (DefaultLogicFactory.LogicModel.NULL.getCode().equals(code)) continue;
+            entity = logicFilterMap.get(code).filter(chatProcess, userAccountQuotaEntity);
             if (!LogicCheckTypeVO.SUCCESS.equals(entity.getType())) return entity;
         }
         return entity != null ? entity : RuleLogicEntity.<ChatProcessAggregate>builder()

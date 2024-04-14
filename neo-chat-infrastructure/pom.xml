@@ -11,4 +11,21 @@
     <packaging>jar</packaging>
 
     <name>neo-chat-infrastructure</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.neo</groupId>
+            <artifactId>neo-chat-domain</artifactId>
+        </dependency>
+    </dependencies>
 </project>
