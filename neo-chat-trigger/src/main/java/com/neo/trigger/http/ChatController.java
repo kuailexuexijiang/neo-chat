@@ -4,7 +4,7 @@ import com.neo.domain.aigc.model.aggregates.ChatProcessAggregate;
 import com.neo.domain.aigc.model.entity.MessageEntity;
 import com.neo.domain.aigc.service.IChatService;
 import com.neo.domain.auth.service.IAuthService;
-import com.neo.trigger.http.dto.ChatGPTRequestDTO;
+import com.neo.trigger.http.dto.AIGCRequestDTO;
 import com.neo.types.common.Constants;
 import com.neo.types.exception.NeoChatException;
 import jakarta.annotation.Resource;
@@ -44,7 +44,7 @@ public class ChatController {
      * }'
      */
     @RequestMapping(value = "chat/completions", method = RequestMethod.POST)
-    public ResponseBodyEmitter completionsStream(@RequestBody ChatGPTRequestDTO request, @RequestHeader("Authorization") String token, HttpServletResponse response) {
+    public ResponseBodyEmitter completionsStream(@RequestBody AIGCRequestDTO request, @RequestHeader("Authorization") String token, HttpServletResponse response) {
         log.info("流式问答请求开始，使用模型：{} 请求信息：{}", request.getModel(), request.getMessages());
 
         try {

@@ -2,13 +2,15 @@ package com.neo.config;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.eventbus.EventBus;
+import com.neo.trigger.mq.OrderPaySuccessListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class GuavaCacheConfig {
+public class GuavaConfig {
 
     @Bean(name = "codeCache")
     public Cache<String, String> codeCache() {
@@ -23,6 +25,13 @@ public class GuavaCacheConfig {
         return CacheBuilder.newBuilder()
                 .expireAfterWrite(12, TimeUnit.HOURS)
                 .build();
+    }
+
+    @Bean
+    public EventBus eventBusListener(OrderPaySuccessListener listener){
+        EventBus eventBus = new EventBus();
+        eventBus.register(listener);
+        return eventBus;
     }
 
 }

@@ -2,7 +2,7 @@ package com.neo.domain.aigc.model.aggregates;
 
 import com.neo.domain.aigc.model.entity.MessageEntity;
 import com.neo.types.common.Constants;
-import com.neo.types.enums.ChatGPTModel;
+import com.neo.types.enums.AIGCModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +19,7 @@ public class ChatProcessAggregate {
     /** 验证信息 */
     private String openid;
     /** 默认模型 */
-    private String model = ChatGPTModel.GPT_3_5_TURBO.getCode();
+    private String model = AIGCModel.GPT_3_5_TURBO.getCode();
     /** 问题描述 */
     private List<MessageEntity> messages;
 

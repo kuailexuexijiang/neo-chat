@@ -1,6 +1,6 @@
 package com.neo.trigger.http.dto;
 
-import com.neo.types.enums.ChatGPTModel;
+import com.neo.types.enums.AIGCModel;
 import lombok.*;
 
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ChatGPTRequestDTO {
+public class AIGCRequestDTO {
 
     /**
      * 默认模型
      */
-    private String model = ChatGPTModel.GPT_3_5_TURBO.getCode();
+    private String model = AIGCModel.GPT_3_5_TURBO.getCode();
 
     /**
      * 问题描述
