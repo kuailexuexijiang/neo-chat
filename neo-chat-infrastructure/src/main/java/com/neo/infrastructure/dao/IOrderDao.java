@@ -12,4 +12,8 @@ public interface IOrderDao {
     void updateOrderPayInfo(OrderPO orderPO);
 
     int changeOrderPaySuccess(OrderPO orderPO);
+
+    OrderPO queryOrder(String orderId);
+
+    int updateOrderStatusDeliverGoods(String orderId);
 }

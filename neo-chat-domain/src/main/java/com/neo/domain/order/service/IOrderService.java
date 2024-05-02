@@ -23,4 +23,6 @@ public interface IOrderService {
      * 变更；订单支付成功
      */
     boolean changeOrderPaySuccess(String orderId, String transactionId, BigDecimal totalAmount, LocalDateTime payTime);
+
+    void deliverGoods(String orderId);
 }

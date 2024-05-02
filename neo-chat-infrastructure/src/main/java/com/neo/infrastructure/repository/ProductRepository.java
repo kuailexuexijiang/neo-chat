@@ -39,6 +39,7 @@ public class ProductRepository implements IProductRepository {
                 .productId(productPO.getProductId())
                 .productName(productPO.getProductName())
                 .productDesc(productPO.getProductDesc())
+                .productModelTypes(productPO.getProductModelTypes())
                 .price(productPO.getPrice())
                 .quota(productPO.getQuota())
                 .enable(ProductEnableModel.get(productPO.getIsEnabled()))

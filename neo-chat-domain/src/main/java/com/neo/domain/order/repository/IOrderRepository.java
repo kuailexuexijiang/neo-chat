@@ -16,4 +16,6 @@ public interface IOrderRepository {
     void updateOrderPayInfo(PayOrderEntity payOrderEntity);
 
     boolean changeOrderPaySuccess(String orderId, String transactionId, BigDecimal totalAmount, LocalDateTime payTime);
+
+    void deliverGoods(String orderId);
 }

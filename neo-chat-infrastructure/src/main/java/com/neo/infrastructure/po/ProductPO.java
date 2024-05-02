@@ -31,6 +31,10 @@ public class ProductPO {
      */
     private String productDesc;
     /**
+     * 可用模型
+     */
+    private String productModelTypes;
+    /**
      * 额度次数
      */
     private Integer quota;

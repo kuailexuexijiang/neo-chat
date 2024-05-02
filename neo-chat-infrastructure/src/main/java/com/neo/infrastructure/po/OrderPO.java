@@ -24,6 +24,12 @@ public class OrderPO {
     private String productName;
     /** 商品额度 */
     private Integer productQuota;
+
+    /**
+     * 可用模型
+     */
+    private String productModelTypes;
+
     /** 订单编号 */
     private String orderId;
     /** 下单时间 */

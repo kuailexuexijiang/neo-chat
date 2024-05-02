@@ -26,6 +26,11 @@ public class ProductEntity {
      * 商品描述
      */
     private String productDesc;
+
+    /**
+     * 可用模型
+     */
+    private String productModelTypes;
     /**
      * 额度次数
      */

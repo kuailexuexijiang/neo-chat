@@ -83,4 +83,9 @@ public class AliPayService extends AbstractOrderService {
     public boolean changeOrderPaySuccess(String orderId, String transactionId, BigDecimal totalAmount, LocalDateTime payTime) {
         return orderRepository.changeOrderPaySuccess(orderId, transactionId, totalAmount, payTime);
     }
+
+    @Override
+    public void deliverGoods(String orderId) {
+        orderRepository.deliverGoods(orderId);
+    }
 }

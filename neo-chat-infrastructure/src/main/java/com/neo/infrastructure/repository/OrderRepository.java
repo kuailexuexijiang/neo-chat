@@ -1,13 +1,19 @@
 package com.neo.infrastructure.repository;
 
+import com.neo.domain.aigc.model.valobj.UserAccountStatusVO;
 import com.neo.domain.order.model.aggregates.CreateOrderAggregate;
 import com.neo.domain.order.model.entity.*;
 import com.neo.domain.order.model.valobj.PayStatusVO;
 import com.neo.domain.order.repository.IOrderRepository;
 import com.neo.infrastructure.dao.IOrderDao;
+import com.neo.infrastructure.dao.IUserAccountDao;
 import com.neo.infrastructure.po.OrderPO;
+import com.neo.infrastructure.po.UserAccountPO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,6 +23,9 @@ public class OrderRepository implements IOrderRepository {
 
     @Resource
     private IOrderDao orderDao;
+
+    @Resource
+    private IUserAccountDao userAccountDao;
 
     @Override
     public UnpaidOrderEntity queryUnpaidOrder(ShopCartEntity shopCartEntity) {
@@ -47,6 +56,7 @@ public class OrderRepository implements IOrderRepository {
         saveOrder.setProductId(product.getProductId());
         saveOrder.setProductName(product.getProductName());
         saveOrder.setProductQuota(product.getQuota());
+        saveOrder.setProductModelTypes(product.getProductModelTypes());
         saveOrder.setOrderId(order.getOrderId());
         saveOrder.setOrderTime(order.getOrderTime());
         saveOrder.setOrderStatus(order.getOrderStatus().getCode());
@@ -76,4 +86,31 @@ public class OrderRepository implements IOrderRepository {
         int count = orderDao.changeOrderPaySuccess(orderPO);
         return count == 1;
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, timeout = 350, propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    public void deliverGoods(String orderId) {
+       OrderPO orderPO = orderDao.queryOrder(orderId);
+
+        // 1. 变更发货状态
+        int updateOrderStatusDeliverGoodsCount = orderDao.updateOrderStatusDeliverGoods(orderId);
+        if (1 != updateOrderStatusDeliverGoodsCount) throw new RuntimeException("updateOrderStatusDeliverGoodsCount update count is not equal 1");
+
+        // 2. 账户额度变更
+        UserAccountPO userAccountPO = userAccountDao.queryUserAccount(orderPO.getOpenid());
+        UserAccountPO userAccountPOReq = new UserAccountPO();
+        userAccountPOReq.setOpenid(orderPO.getOpenid());
+        userAccountPOReq.setTotalQuota(orderPO.getProductQuota());
+        userAccountPOReq.setSurplusQuota(orderPO.getProductQuota());
+        // todo 待处理
+        userAccountPOReq.setModelTypes(orderPO.getProductModelTypes());
+        if (null != userAccountPO){
+            int addAccountQuotaCount = userAccountDao.addAccountQuota(userAccountPOReq);
+            if (1 != addAccountQuotaCount) throw new RuntimeException("addAccountQuotaCount update count is not equal 1");
+        } else {
+            userAccountPOReq.setStatus(UserAccountStatusVO.AVAILABLE.getCode());
+            userAccountDao.insert(userAccountPOReq);
+        }
+    }
+
 }
