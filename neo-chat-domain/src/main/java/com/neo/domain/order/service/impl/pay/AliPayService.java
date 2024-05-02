@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AliPayService extends AbstractOrderService {
@@ -87,5 +88,25 @@ public class AliPayService extends AbstractOrderService {
     @Override
     public void deliverGoods(String orderId) {
         orderRepository.deliverGoods(orderId);
+    }
+
+    @Override
+    public List<PayOrderEntity> queryNoPayNotifyOrder() {
+        return orderRepository.queryNoPayNotifyOrder();
+    }
+
+    @Override
+    public List<String> queryReplenishmentOrder() {
+        return orderRepository.queryReplenishmentOrder();
+    }
+
+    @Override
+    public List<String> queryTimeoutCloseOrderList() {
+        return orderRepository.queryTimeoutCloseOrderList();
+    }
+
+    @Override
+    public boolean changeOrderClose(String orderId) {
+        return orderRepository.changeOrderClose(orderId);
     }
 }

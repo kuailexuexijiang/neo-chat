@@ -5,6 +5,7 @@ import com.neo.domain.order.model.entity.ShopCartEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 订单服务
@@ -25,4 +26,12 @@ public interface IOrderService {
     boolean changeOrderPaySuccess(String orderId, String transactionId, BigDecimal totalAmount, LocalDateTime payTime);
 
     void deliverGoods(String orderId);
+
+    List<PayOrderEntity> queryNoPayNotifyOrder();
+
+    List<String> queryReplenishmentOrder();
+
+    List<String> queryTimeoutCloseOrderList();
+
+    boolean changeOrderClose(String orderId);
 }

@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class OrderRepository implements IOrderRepository {
@@ -113,4 +115,27 @@ public class OrderRepository implements IOrderRepository {
         }
     }
 
+    @Override
+    public List<PayOrderEntity> queryNoPayNotifyOrder() {
+        List<OrderPO> orderPOList = orderDao.queryNoPayNotifyOrder();
+        return orderPOList.stream().map(orderPO -> PayOrderEntity.builder()
+                   .orderId(orderPO.getOrderId())
+                   .payType(orderPO.getPayType())
+                   .build()).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> queryReplenishmentOrder() {
+        return orderDao.queryReplenishmentOrder();
+    }
+
+    @Override
+    public List<String> queryTimeoutCloseOrderList() {
+        return orderDao.queryTimeoutCloseOrderList();
+    }
+
+    @Override
+    public boolean changeOrderClose(String orderId) {
+        return orderDao.changeOrderClose(orderId);
+    }
 }

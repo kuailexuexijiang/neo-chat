@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neo.infrastructure.dao.IOrderDao">
 
-    <resultMap id="userAccountMap" type="com.neo.infrastructure.po.OrderPO">
+    <resultMap id="orderMap" type="com.neo.infrastructure.po.OrderPO">
         <id column="id" property="id"/>
         <result column="openid" property="openid"/>
         <result column="product_id" property="productId"/>
@@ -36,7 +36,7 @@
     </insert>
 
     <select id="queryUnpaidOrder" parameterType="com.neo.infrastructure.po.OrderPO"
-            resultMap="userAccountMap">
+            resultMap="orderMap">
         SELECT order_id, product_name, pay_url, pay_status, total_amount, pay_type
         FROM openai_order
         WHERE openid = #{openid} AND product_id = #{productId} AND order_status = 0
@@ -62,7 +62,7 @@
         WHERE order_id = #{orderId} AND pay_time is null
     </update>
 
-    <select id="queryOrder" parameterType="java.lang.String" resultMap="userAccountMap">
+    <select id="queryOrder" parameterType="java.lang.String" resultMap="orderMap">
         SELECT openid, product_id, product_name, product_quota, product_model_types ,order_id,
                order_time, order_status, total_amount, pay_type, pay_status,
                pay_time
@@ -83,8 +83,8 @@
             LIMIT 10
     </select>
 
-    <select id="queryNoPayNotifyOrder" resultType="java.lang.String">
-        SELECT order_id as orderId FROM openai_order
+    <select id="queryNoPayNotifyOrder" resultMap="orderMap">
+        SELECT order_id, pay_type FROM openai_order
         WHERE order_status = 0 AND pay_status = 0 AND NOW() >= order_time + INTERVAL 1 MINUTE
         ORDER BY id ASC
             LIMIT 10

@@ -7,6 +7,7 @@ import com.neo.domain.order.model.entity.UnpaidOrderEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface IOrderRepository {
     UnpaidOrderEntity queryUnpaidOrder(ShopCartEntity shopCartEntity);
@@ -18,4 +19,12 @@ public interface IOrderRepository {
     boolean changeOrderPaySuccess(String orderId, String transactionId, BigDecimal totalAmount, LocalDateTime payTime);
 
     void deliverGoods(String orderId);
+
+    List<PayOrderEntity> queryNoPayNotifyOrder();
+
+    List<String> queryReplenishmentOrder();
+
+    List<String> queryTimeoutCloseOrderList();
+
+    boolean changeOrderClose(String orderId);
 }
