@@ -18,9 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
  * @description 敏感词过滤
- * @create 2023-09-16 17:39
  */
 @Slf4j
 @Component

@@ -15,9 +15,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
  * @description 访问次数限制
- * @create 2023-09-16 17:06
  */
 @Slf4j
 @Component
