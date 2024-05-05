@@ -45,14 +45,15 @@ public class TimeoutCloseOrderJob {
                 bizContent.put("out_trade_no", orderId);
                 request.setBizContent(bizContent.toString());
                 AlipayTradeCloseResponse response = alipayClient.execute(request);
+                log.info("定时任务，超时30分钟订单关闭 response: {}", response);
                 if (response.isSuccess()) {
-                    log.info("定时任务，超时30分钟订单关闭 orderId: {} status：{}", orderId, status);
+                    log.info("定时任务，超时30分钟订单关闭成功 orderId: {} status：{}", orderId, status);
                 } else {
                     log.error("定时任务，超时30分钟订单关闭失败 orderId: {}", orderId);
                 }
             }
         } catch (Exception e) {
-            log.error("定时任务，超时30分钟订单关闭失败", e);
+            log.error("定时任务，超时30分钟订单关闭任务失败", e);
         }
     }
 

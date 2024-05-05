@@ -58,9 +58,15 @@ public class NoPayNotifyOrderJob {
                     model.setOutTradeNo(payOrderEntity.getOrderId());
                     request.setBizModel(model);
                     AlipayTradeQueryResponse response = alipayClient.execute(request);
+                    log.info("支付宝沙箱查询订单支付状态，orderid={}, response is {}", payOrderEntity.getOrderId(), response);
                     if (response.isSuccess()) {
                         String body = response.getBody();
                         JSONObject trade = JSONObject.parseObject(body);
+                        String tradeStatus = trade.getString("trade_status");
+                        if (!"TRADE_SUCCESS".equals(tradeStatus)) {
+                            log.info("定时任务，订单支付状态更新，当前订单未支付 orderId is {}, 订单支付状态为{}", payOrderEntity.getOrderId(), tradeStatus);
+                            continue;
+                        }
 
                         JSONObject alipayTradeQueryResponse = trade.getJSONObject("alipay_trade_query_response");
 
